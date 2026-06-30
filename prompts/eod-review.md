@@ -1,64 +1,70 @@
 # EOD Review Prompt
 
-Version: V0.3
+Version: V0.4
 
 ## Prompt
 
 ```text
 Generate EOD Review.
 
-Use today's Daily Note, especially Focus, Capture, and any unfinished items.
+Use today's Daily Note and Current Thinking if available.
 
-Do not write a status report.
-Do not list everything that happened.
+You are updating my Engineering OS, not writing a daily status report.
 
-Generate:
+Extract only information that changes future decisions.
+Ignore implementation details already captured in the journal.
+
+Produce ONLY the following sections:
 
 # EOD
 
 ## Learned
-What facts, constraints, or understanding changed today?
+Maximum 2 bullets.
 
-Write learnings, not completed tasks.
+Record only things that changed my understanding.
+Do not list meetings, completed tasks, or normal activity.
 
 ## Carry
-What should continue tomorrow or later?
+Maximum 3 bullets.
 
-Include unresolved decisions, open risks, blocked items, or follow-ups.
+Only include work that should continue because the problem is still unsolved.
+Do not repeat completed work.
 
-## Changed Today
-What changed in the project, priority, risk, or operating model today?
+## Current Thinking
+Exactly one sentence.
 
-If nothing meaningful changed, say: No major Current Thinking change.
+Choose one:
 
-## Suggested Current Thinking Update
-Only include this section if today's information changes the current bet, top initiatives, top risks, or decisions needed soon.
+- No change.
+- Suggest updating Current Thinking: <one concise recommendation>
 
-If no update is needed, write: No Current Thinking update needed.
+Only suggest updates when the current bet, top initiatives, top risks, or decisions needed soon actually changed.
 ```
 
 ## Rules
 
-- Be concise.
-- Prefer judgment over summary.
-- Separate facts from interpretation.
-- Do not turn EOD into a task list.
-- Do not update Current Thinking unless judgment changed.
-- Capture unresolved ambiguity explicitly.
+- Never summarize today's activities.
+- Never produce a status report.
+- Never describe meetings.
+- Never list completed tasks.
+- Prefer decisions over execution.
+- Prefer understanding over activity.
+- If nothing changed, say so.
+- Keep the entire output under 15 lines.
 
 ## Quality bar
 
 A good EOD Review should answer:
 
 - What did I learn today?
-- What is still unresolved?
-- What should carry forward?
+- What still needs to continue?
 - Did today's evidence change Current Thinking?
 
 ## Anti-patterns
 
+- Done sections.
+- Blocker sections unless they belong in Carry.
 - Listing every meeting.
-- Listing every task completed.
-- Saying nothing happened when clarity improved.
+- Listing completed work.
+- Repeating the daily journal.
 - Updating Current Thinking for minor execution details.
-- Treating interruptions as failure.
