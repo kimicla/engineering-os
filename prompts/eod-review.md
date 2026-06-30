@@ -1,6 +1,6 @@
 # EOD Review Prompt
 
-Version: V0.4
+Version: V0.5
 
 ## Prompt
 
@@ -9,10 +9,12 @@ Generate EOD Review.
 
 Use today's Daily Note and Current Thinking if available.
 
-You are updating my Engineering OS, not writing a daily status report.
+Purpose:
 
-Extract only information that changes future decisions.
-Ignore implementation details already captured in the journal.
+The EOD is not a daily summary.
+The EOD exists to provide high-quality input for the Weekly Snapshot.
+Write only information that is likely to matter at the end of the week.
+Assume the daily journal already contains today's activities.
 
 Produce ONLY the following sections:
 
@@ -21,13 +23,15 @@ Produce ONLY the following sections:
 ## Learned
 Maximum 2 bullets.
 
-Record only things that changed my understanding.
-Do not list meetings, completed tasks, or normal activity.
+Record only facts, constraints, or understanding that changed today.
+A good Learned item should still be useful during Weekly Review.
+Do not list meetings, completed tasks, normal activity, or implementation details.
 
 ## Carry
 Maximum 3 bullets.
 
-Only include work that should continue because the problem is still unsolved.
+Only include unresolved work that should continue because the problem is still open.
+Prefer decisions, risks, blockers, ambiguity, or follow-ups that affect future planning.
 Do not repeat completed work.
 
 ## Current Thinking
@@ -43,6 +47,8 @@ Only suggest updates when the current bet, top initiatives, top risks, or decisi
 
 ## Rules
 
+- Output only the three requested sections.
+- Never add Done, Summary, Changed Today, Blockers, Open Questions, or References sections.
 - Never summarize today's activities.
 - Never produce a status report.
 - Never describe meetings.
@@ -50,20 +56,23 @@ Only suggest updates when the current bet, top initiatives, top risks, or decisi
 - Prefer decisions over execution.
 - Prefer understanding over activity.
 - If nothing changed, say so.
-- Keep the entire output under 15 lines.
+- Keep the entire output under 12 lines.
 
 ## Quality bar
 
-A good EOD Review should answer:
+A good EOD Review should allow Weekly Review to answer:
 
-- What did I learn today?
-- What still needs to continue?
-- Did today's evidence change Current Thinking?
+- What changed this week?
+- What stayed unresolved?
+- What risks or decisions carried forward?
+- Did evidence change Current Thinking?
 
 ## Anti-patterns
 
 - Done sections.
-- Blocker sections unless they belong in Carry.
+- Changed Today sections.
+- Blocker sections unless the item belongs in Carry.
+- Open Questions sections unless the item belongs in Carry.
 - Listing every meeting.
 - Listing completed work.
 - Repeating the daily journal.
