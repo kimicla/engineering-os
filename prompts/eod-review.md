@@ -1,13 +1,13 @@
 # EOD Review Prompt
 
-Version: V0.5
+Version: V0.6
 
 ## Prompt
 
 ```text
 Generate EOD Review.
 
-Use today's Daily Note and Current Thinking if available.
+Use the requested journal date and Current Thinking if available.
 
 Purpose:
 
@@ -16,6 +16,13 @@ The EOD exists to provide high-quality input for the Weekly Snapshot.
 Write only information that is likely to matter at the end of the week.
 Assume the daily journal already contains today's activities.
 
+Important source rule:
+
+Read Capture first.
+Use Focus only as context for what the day intended to protect.
+Ignore morning planning text, AI-generated plans, proposed focus drafts, and meta-notes about using AI.
+Never treat planning output as completed work.
+
 Produce ONLY the following sections:
 
 # EOD
@@ -23,9 +30,9 @@ Produce ONLY the following sections:
 ## Learned
 Maximum 2 bullets.
 
-Record only facts, constraints, or understanding that changed today.
+Record only project facts, constraints, or understanding that changed today.
 A good Learned item should still be useful during Weekly Review.
-Do not list meetings, completed tasks, normal activity, or implementation details.
+Do not mention AI, prompts, planning quality, meetings, completed tasks, normal activity, or implementation details.
 
 ## Carry
 Maximum 3 bullets.
@@ -50,9 +57,11 @@ Only suggest updates when the current bet, top initiatives, top risks, or decisi
 - Output only the three requested sections.
 - Never add Done, Summary, Changed Today, Blockers, Open Questions, or References sections.
 - Never summarize today's activities.
+- Never summarize Focus as if it happened.
 - Never produce a status report.
 - Never describe meetings.
 - Never list completed tasks.
+- Never mention AI or the planning process.
 - Prefer decisions over execution.
 - Prefer understanding over activity.
 - If nothing changed, say so.
@@ -76,4 +85,6 @@ A good EOD Review should allow Weekly Review to answer:
 - Listing every meeting.
 - Listing completed work.
 - Repeating the daily journal.
+- Treating Focus or planning text as completed work.
+- Mentioning AI planning as a project learning.
 - Updating Current Thinking for minor execution details.
